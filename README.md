@@ -1,1 +1,3 @@
-# WeRent_TestTask_Zuev_QA
+# Зуев Илья Григорьевич
+## QA Engineer
+## Тестовое задания для WeRent
