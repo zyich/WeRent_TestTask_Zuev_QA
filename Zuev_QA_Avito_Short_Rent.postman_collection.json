@@ -1,0 +1,494 @@
+{
+	"info": {
+		"_postman_id": "1ac1d823-3187-48da-9b65-2c77f66ef63d",
+		"name": "Short Rent",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36847690"
+	},
+	"item": [
+		{
+			"name": "Заполнение календаря занятости объекта недвижимости",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "Берем из Док",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Берем из док",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"description": "Из настроек aouth2.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookings\": [\n    {\n      \"comment\": \"Комментарий\",\n      \"date_end\": \"2024-03-24\",\n      \"date_start\": \"2024-03-23\"\n    },\n    {\n      \"date_end\": \"2024-03-25\",\n      \"date_start\": \"2024-03-24\",\n      \"type\": \"manual\"\n    },\n    {\n      \"date_end\": \"2025-03-26\",\n      \"date_start\": \"2025-03-25\",\n      \"type\": \"booking\"\n    }\n  ],\n  \"source\": \"pms\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.avito.ru/core/v1/accounts/{user_id}/items/{item_id}/bookings\n?user_id=int&item_id=int",
+					"protocol": "https",
+					"host": [
+						"api",
+						"avito",
+						"ru"
+					],
+					"path": [
+						"core",
+						"v1",
+						"accounts",
+						"{user_id}",
+						"items",
+						"{item_id}",
+						"bookings\n"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "int",
+							"description": "Номер пользователя в Личном кабинете Авито"
+						},
+						{
+							"key": "item_id",
+							"value": "int",
+							"description": "Идентификатор объявления на сайте"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Получение списка броней по объявлению",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "Берем из Док",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Берем из док",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"description": "Из настроек aouth2.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"bookings\": [\n    {\n      \"comment\": \"Комментарий\",\n      \"date_end\": \"2024-03-24\",\n      \"date_start\": \"2024-03-23\"\n    },\n    {\n      \"date_end\": \"2024-03-25\",\n      \"date_start\": \"2024-03-24\",\n      \"type\": \"manual\"\n    },\n    {\n      \"date_end\": \"2025-03-26\",\n      \"date_start\": \"2025-03-25\",\n      \"type\": \"booking\"\n    }\n  ],\n  \"source\": \"pms\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.avito.ru/realty/v1/accounts/{{user_id}}/items/{{item_id}}/bookings\n?user_id=232332&item_id=232323&date_start=2019-02-04&date_end=2019-02-05&skip_error=false&with_unpaid=true",
+					"protocol": "https",
+					"host": [
+						"api",
+						"avito",
+						"ru"
+					],
+					"path": [
+						"realty",
+						"v1",
+						"accounts",
+						"{{user_id}}",
+						"items",
+						"{{item_id}}",
+						"bookings\n"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "232332",
+							"description": "Номер пользователя в Личном кабинете Авито"
+						},
+						{
+							"key": "item_id",
+							"value": "232323",
+							"description": "Идентификатор объявления на сайте"
+						},
+						{
+							"key": "date_start",
+							"value": "2019-02-04"
+						},
+						{
+							"key": "date_end",
+							"value": "2019-02-05"
+						},
+						{
+							"key": "skip_error",
+							"value": "false",
+							"description": "bool"
+						},
+						{
+							"key": "with_unpaid",
+							"value": "true",
+							"description": "bool"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Актуализация параметров для выбранных периодов",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "Берем из Док",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Берем из док",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"description": "Из настроек aouth2.0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"prices\": [\n    {\n      \"date_from\": \"2024-06-01\",\n      \"date_to\": \"2024-06-07\",\n      \"extra_guest_fee\": 500,\n      \"minimal_duration\": 2,\n      \"night_price\": 2000\n    },\n    {\n      \"date_from\": \"2024-06-08\",\n      \"date_to\": \"2024-06-15\",\n      \"extra_guest_fee\": 1000,\n      \"minimal_duration\": 3,\n      \"night_price\": 2500\n    }\n  ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.avito.ru/realty/v1/accounts/{user_id}/items/{item_id}/prices?user_id=12345&item_Id=22",
+					"protocol": "https",
+					"host": [
+						"api",
+						"avito",
+						"ru"
+					],
+					"path": [
+						"realty",
+						"v1",
+						"accounts",
+						"{user_id}",
+						"items",
+						"{item_id}",
+						"prices"
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "12345",
+							"description": "Номер пользователя в Личном кабинете Авито"
+						},
+						{
+							"key": "item_Id",
+							"value": "22",
+							"description": "Идентификатор объявления на сайте"
+						},
+						{
+							"key": "skip_error",
+							"value": "true/false",
+							"description": "bool(необязательные)",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Установка базовых параметров",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientSecret",
+							"value": "Берем из Док",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "Берем из док",
+							"type": "string"
+						},
+						{
+							"key": "refreshRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "tokenRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "authRequestParams",
+							"value": [],
+							"type": "any"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "queryParams",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{auth_token}}",
+						"description": "Из настроек aouth2.0",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://api.avito.ru/realty/v1/items/{item_id}/base?Item_id=666",
+					"protocol": "https",
+					"host": [
+						"api",
+						"avito",
+						"ru"
+					],
+					"path": [
+						"realty",
+						"v1",
+						"items",
+						"{item_id}",
+						"base"
+					],
+					"query": [
+						{
+							"key": "Item_id",
+							"value": "666",
+							"description": "Идентификатор объявления на сайте"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
