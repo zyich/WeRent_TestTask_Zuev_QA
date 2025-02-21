@@ -1,6 +1,5 @@
 # Тестовое задания для WeRent
-## Зуев Илья
-## QA Engineer
+## Зуев Илья(QA Engineer)
 
 ### Ссылка на чек-листы и тест-кейсы по заданому функционалу:
 https://docs.google.com/spreadsheets/d/1zYDc12hbOtkMFZAoRKxNrwtWmEh2kLTLAU6FwXmRDFQ/edit?usp=sharing
